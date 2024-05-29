@@ -1,0 +1,30 @@
+[
+  {
+    "title": "Revolutionary Solar-Powered Backpack",
+    "description": "A backpack with built-in solar panels that can charge your devices on the go.",
+    "goalAmount": 100000,
+    "deadline": "2024-12-31T00:00:00.000Z"
+  },
+  {
+    "_id": "60c72b2f9af1b03d8e11b348",
+    "title": "Smart Water Bottle",
+    "description": "A water bottle that tracks your hydration levels and reminds you to drink water.",
+    "goalAmount": 50000,
+    "deadline": "2024-11-30T00:00:00.000Z"
+  }
+],
+[
+  {
+    "projectID": "60c72b2f9af1b03d8e11b345",
+    "title": "Early Bird Special",
+    "description": "Get the Solar-Powered Backpack at a discounted price.",
+    "amount": 8000
+  },
+  {
+    "_id": "60c72b2f9af1b03d8e11b347",
+    "projectID": "60c72b2f9af1b03d8e11b345",
+    "title": "Standard Package",
+    "description": "Get the Solar-Powered Backpack with additional accessories.",
+    "amount": 10000
+  }
+]
