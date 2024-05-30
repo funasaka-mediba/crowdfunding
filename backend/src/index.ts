@@ -1,5 +1,7 @@
 // index.ts
 import express from 'express';
+import fs from 'fs';
+import path from 'path';
 import mongoose from 'mongoose';
 import bodyParser from 'body-parser';
 import cors from 'cors';
@@ -20,6 +22,15 @@ mongoose.connect('mongodb://localhost/crowdfunding', {})
   .catch((error) => {
     console.error('Error connecting to MongoDB:', error);
   });
+
+// Ensure the uploads directory exists
+const uploadsDir = path.join(__dirname, '..', 'uploads');
+if (!fs.existsSync(uploadsDir)) {
+    fs.mkdirSync(uploadsDir);
+}
+
+// Static files serving middleware
+app.use('/uploads', express.static(path.join(__dirname, '..', 'uploads')));
 
 // Simple route
 app.get('/', (req, res) => {

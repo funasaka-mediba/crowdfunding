@@ -7,16 +7,16 @@ export interface IProject extends Document {
     description: string;
     goalAmount: number;
     deadline: Date;
-    // returns: mongoose.Types.ObjectId[];
+    imageUrl?: string;
 }
 
 const ProjectSchema: Schema = new Schema({
-    projectID: { type: Schema.Types.ObjectId, ref: "Project", required: true},
+    // projectID: { type: Schema.Types.ObjectId, ref: "Project", required: true},
     title: { type: String, required: true },
     description: { type: String, required: true },
     goalAmount: { type: Number, required: true },
     deadline: { type: Date, required: true },
-    // returns: [{ type: Schema.Types.ObjectId, ref: "Return" }],
+    imageUrl: { type: String }
 });
 
 export default mongoose.model<IProject>("Project", ProjectSchema, "projects");

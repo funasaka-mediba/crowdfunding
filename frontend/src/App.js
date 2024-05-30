@@ -4,6 +4,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import { Navbar, Nav, Container, Row, Col, Card, Button, Form, FormControl } from 'react-bootstrap';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import ProjectDetails from './components/ProjectDetails';
+import NewProject from './components/NewProject';
 
 const App = () => {
   const [projects, setProjects] = useState([]);
@@ -55,7 +56,6 @@ const App = () => {
           </Container>
         </Navbar>
 
-        <h1 className="text-center mt-4">プロジェクト一覧</h1>
         <Container>
           <Routes>
             <Route path="/" element={
@@ -75,6 +75,7 @@ const App = () => {
               </Row>
             } />
             <Route path="/projects/:id" element={<ProjectDetails />} />
+            <Route path="/projects/new" element={<NewProject />} />
           </Routes>
         </Container>
 
