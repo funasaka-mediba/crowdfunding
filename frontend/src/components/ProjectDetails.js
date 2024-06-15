@@ -31,6 +31,7 @@ const ProjectDetails = ({ match }) => {
             <h1>{project.title}</h1>
             <p>{project.description}</p>
             <p>目標額 ￥{project.goalAmount} 円</p>
+            <p>残り {project.deadlineInDays} 日</p>
             <h3>リターン</h3>
             {returns.map((returnItem, index) => (
                 <Col md={4} key={index} className="mb-4">

@@ -67,6 +67,7 @@ const App = () => {
                         <Card.Title>{project.title}</Card.Title>
                         <Card.Text>{project.description}</Card.Text>
                         <Card.Text>目標額 ￥{project.goalAmount} 円</Card.Text>
+                        <Card.Text>残り {project.deadlineInDays} 日</Card.Text>
                         <Button variant="primary" href={`/projects/${project._id}`}>詳細を見る</Button>
                       </Card.Body>
                     </Card>

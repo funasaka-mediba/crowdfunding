@@ -7,6 +7,7 @@ export interface IProject extends Document {
     description: string;
     goalAmount: number;
     deadline: Date;
+    deadlineInDays?: number;
     imageUrl?: string;
 }
 
@@ -16,6 +17,7 @@ const ProjectSchema: Schema = new Schema({
     description: { type: String, required: true },
     goalAmount: { type: Number, required: true },
     deadline: { type: Date, required: true },
+    deadlineInDays: { type: Number },
     imageUrl: { type: String }
 });
 

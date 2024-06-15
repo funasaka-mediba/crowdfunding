@@ -24,6 +24,13 @@ const upload = multer({ storage: storage });
 router.get('/', async (req: Request, res: Response, next: NextFunction) => {
     try {
         const projects: IProject[] = await Project.find().limit(20);
+        // 全てのprojectsのdeadlineと現在の日付の差分を計算
+        projects.forEach((project) => {
+            const now = new Date();
+            const diff = project.deadline.getTime() - now.getTime();
+            const deadlineInDays = Math.floor(diff / (1000 * 60 * 60 * 24))
+            project.deadlineInDays = deadlineInDays;
+        });
         res.json({projects});
     } catch (error) {
         next(error);
@@ -40,6 +47,13 @@ router.get('/:id', async (req: Request, res: Response, next: NextFunction) => {
             return res.status(404).json({ error: 'Project not found' });
         }
         console.log(`Found project: ${project}`);
+
+        // projectのdeadlineと現在の日付の差分を計算
+        const now = new Date();
+        const diff = project.deadline.getTime() - now.getTime();
+        const deadlineInDays = Math.floor(diff / (1000 * 60 * 60 * 24))
+        project.deadlineInDays = deadlineInDays;
+
         const returns: IReturn[] = await Return.find({ projectID: projectId });
         res.json({project, returns});
     } catch (error) {
