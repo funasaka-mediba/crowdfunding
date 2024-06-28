@@ -1,0 +1,39 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+// Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?
+// Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model Project {
+  id          Int      @id @default(autoincrement()) @map("id")
+  title       String   @map("title")
+  description String   @map("description")
+  goalAmount  Float    @map("goalAmount")
+  deadline    DateTime @map("deadline")
+  imageUrl    String?  @map("imageUrl")
+  createdAt   DateTime @default(now()) @map("created_at")
+  updatedAt   DateTime @updatedAt @map("updated_at")
+  returns     Return[] @relation("projectReturns")
+  @@map("project")
+}
+
+model Return {
+  id          Int      @id @default(autoincrement()) @map("id")
+  projectId   Int      @map("project_id")
+  title       String   @map("title")
+  description String   @map("description")
+  amount      Float    @map("amount")
+  createdAt   DateTime @default(now()) @map("created_at")
+  updatedAt   DateTime @updatedAt @map("updated_at")
+  project     Project  @relation("projectReturns", fields: [projectId], references: [id])
+  @@map("return")
+}
