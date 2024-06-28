@@ -1,0 +1,24 @@
+version: '3.8'
+
+services:
+  mysql:
+    image: mysql:8.0
+    build: ./docker/db
+    platform: linux/x86_64
+    container_name: mysql
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: crowdfunding
+      MYSQL_USER: dbuser
+      MYSQL_PASSWORD: password
+      TZ: "Asia/Tokyo"
+      LC_ALL: "ja_JP.UTF-8"
+      MYSQL_AUTHENTICATION_PLUGIN: mysql_native_password
+      MYSQLD_DEFAULT_AUTHENTICATION_PLUGIN: mysql_native_password
+    ports:
+      - "5506:3306"
+    volumes:
+      - "./docker/db/data:/var/lib/mysql"
+      - "./docker/db/conf:/etc/mysql/conf.d"
+      - "./docker/db/init:/docker-entrypoint-initdb.d"
+      - "./docker/db/logs:/var/log/mysql"

@@ -35,3 +35,5 @@
 
 - MongoDBのdocker初期構築はこちらを参考にした。
     - https://note.com/rescuenow_hr/n/n99c1d4afa5c1
+
+- MongoDBやっぱり使いずらい。MySQLかPostgresQLに変えるか。
