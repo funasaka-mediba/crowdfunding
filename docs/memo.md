@@ -37,3 +37,4 @@
     - https://note.com/rescuenow_hr/n/n99c1d4afa5c1
 
 - MongoDBやっぱり使いずらい。MySQLかPostgresQLに変えるか。
+- 入れ替えたので、apiを修正し、DBからの取得ができるか動作確認。
